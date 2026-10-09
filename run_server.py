@@ -18,6 +18,8 @@ if __name__ == "__main__":
     db_url = os.environ.get("DATABASE_URL", "")
     nvidia_key = os.environ.get("NVIDIA_API_KEY", "")
     nvidia_model = os.environ.get("NVIDIA_MODEL", "nvidia/nemotron-3-ultra-550b-a55b")
+    gemini_key = os.environ.get("GEMINI_API_KEY", "")
+    gemini_model = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash")
 
     if nvidia_key:
         ai_engine_str = f"NVIDIA NIM ({nvidia_model.split('/')[-1]}) [ACTIVE]"

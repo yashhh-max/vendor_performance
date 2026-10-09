@@ -286,7 +286,12 @@ Return strictly a valid JSON object matching this schema without any markdown fo
 
     # 1. Try NVIDIA NIM first
     if is_nvidia_available():
-        res = await call_nvidia_api(prompt, f"### [AUDIT DATA] {vendor.get('name')}")
+        res = await call_nvidia_api(
+            prompt,
+            f"### [AUDIT DATA] {vendor.get('name')}",
+            max_tokens=1024,
+            temperature=0.2
+        )
         if res and res.get("reply"):
             try:
                 cleaned = res["reply"].strip()

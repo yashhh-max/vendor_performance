@@ -283,7 +283,7 @@ def test_ai_deep_analysis_endpoint():
 
 def test_mocked_nvidia_timeout_fallback():
     """Verify when NVIDIA API times out, the system gracefully falls back to deterministic engine."""
-    with patch("app.nvidia_service.call_nvidia_api", return_value=None):
+    with patch("app.ai_service.call_nvidia_api", return_value=None):
         auth_client = get_auth_client()
         res = auth_client.post("/api/ai/chat", json={
             "message": "Which vendor is best for high-value orders?"

@@ -50,8 +50,8 @@ def create_nvidia_client() -> Optional[OpenAI]:
         return OpenAI(
             base_url=cfg["base_url"],
             api_key=cfg["api_key"],
-            timeout=35.0,
-            max_retries=2
+            timeout=30.0,
+            max_retries=1
         )
     except Exception as e:
         logger.error(f"Failed to initialize NVIDIA client: {e}")
@@ -127,7 +127,7 @@ def _execute_sync_nvidia_call(
 ) -> Dict[str, Any]:
     """Synchronous worker that calls NVIDIA API with retry on transient errors."""
     last_err = None
-    for attempt in range(3):
+    for attempt in range(2):
         try:
             completion = client.chat.completions.create(
                 model=model,
@@ -142,9 +142,9 @@ def _execute_sync_nvidia_call(
         except Exception as e:
             last_err = e
             err_str = str(e)
-            if attempt < 2 and ("503" in err_str or "429" in err_str or "overloaded" in err_str.lower() or "timeout" in err_str.lower()):
-                logger.info(f"Transient error on NVIDIA API (attempt {attempt+1}/3), backing off: {err_str[:80]}")
-                time.sleep(1.2 * (attempt + 1))
+            if attempt < 1 and ("503" in err_str or "429" in err_str or "overloaded" in err_str.lower() or "timeout" in err_str.lower()):
+                logger.info(f"Transient error on NVIDIA API (attempt {attempt+1}/2), backing off: {err_str[:80]}")
+                time.sleep(1.0)
                 continue
             break
     if last_err:
@@ -156,7 +156,9 @@ async def call_nvidia_api(
     user_message: str,
     factual_table_md: str,
     chat_history: Optional[List[Dict[str, str]]] = None,
-    scoped_vendor_name: Optional[str] = None
+    scoped_vendor_name: Optional[str] = None,
+    max_tokens: int = 4096,
+    temperature: float = 0.6
 ) -> Optional[Dict[str, Any]]:
     """
     Executes a grounded call to the NVIDIA API asynchronously.
@@ -174,7 +176,9 @@ async def call_nvidia_api(
             _execute_sync_nvidia_call,
             client,
             cfg["model"],
-            messages
+            messages,
+            temperature,
+            max_tokens
         )
         return {
             "reply": result["content"].strip(),

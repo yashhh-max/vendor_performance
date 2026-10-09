@@ -1,10 +1,21 @@
 # VendorSync AI — Enterprise Vendor Performance Platform
 ### Featuring Grounded AI Copilot powered by NVIDIA NIM (`nvidia/nemotron-3-ultra-550b-a55b`)
 
+[![Live Public Deployment](https://img.shields.io/badge/Live%20Demo-HTTPS%20Online-success?logo=cloudflare)](https://specially-lane-obtaining-opt.trycloudflare.com)
 [![Backend Integration Tests](https://img.shields.io/badge/Backend%20Tests-15%2F15%20Passing-success)](test_backend.py)
 [![NVIDIA AI Pytest Suite](https://img.shields.io/badge/Pytest%20Suite-16%2F16%20Passing-success)](tests/test_nvidia_chatbot.py)
 [![NVIDIA NIM](https://img.shields.io/badge/AI%20Engine-NVIDIA%20NIM%20Active-76b900?logo=nvidia)](https://build.nvidia.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+---
+
+## 🌐 Live Public Deployment
+
+The full-stack application is deployed live on the public internet:
+- **Public URL:** [https://specially-lane-obtaining-opt.trycloudflare.com](https://specially-lane-obtaining-opt.trycloudflare.com)
+- **Demo Account:** `admin@vendorsync.ai` / `admin123`
+- **Architecture:** Cloudflare Edge Anycast SSL → Zero-Trust Tunnel → FastAPI ASGI Core + Static SPA + SQLite/Postgres + NVIDIA NIM (`nemotron-3-ultra-550b-a55b`)
+- **Detailed Deployment Guide:** See [DEPLOY.md](DEPLOY.md)
 
 ---
 
