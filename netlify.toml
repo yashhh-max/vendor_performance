@@ -1,10 +1,10 @@
 [build]
   publish = "frontend/public"
 
-# Proxy API requests to backend
+# Proxy API requests to permanent cloud-hosted backend on Vercel
 [[redirects]]
   from = "/api/*"
-  to = "https://semester-mary-accordingly-juvenile.trycloudflare.com/api/:splat"
+  to = "https://vendorperformance.vercel.app/api/:splat"
   status = 200
   force = true
 

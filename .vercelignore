@@ -1,0 +1,11 @@
+video/
+*.pptx
+*.exe
+cloudflared.exe
+.git/
+.venv/
+venv/
+__pycache__/
+*.db
+*.log
+.netlify/

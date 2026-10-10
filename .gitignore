@@ -20,3 +20,5 @@ cloudflared*
 
 # Local Netlify folder
 .netlify
+
+.vercel

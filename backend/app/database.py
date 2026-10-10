@@ -16,7 +16,10 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
 DB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SQLITE_PATH = os.path.join(DB_DIR, "vendor_sync.db")
+if os.getenv("VERCEL") or os.getenv("AWS_LAMBDA_FUNCTION_NAME"):
+    SQLITE_PATH = os.path.join("/tmp", "vendor_sync.db")
+else:
+    SQLITE_PATH = os.path.join(DB_DIR, "vendor_sync.db")
 SEED_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "seed_data.json")
 
 HAS_PSYCOPG2 = False
