@@ -1,6 +1,7 @@
 # VendorSync AI — Production Deployment & Live Cloud Architecture
 
-**Live Public Internet Deployment:** [https://specially-lane-obtaining-opt.trycloudflare.com](https://specially-lane-obtaining-opt.trycloudflare.com)  
+**Live Public Internet Deployment:** [https://eyes-reaches-scheme-legends.trycloudflare.com](https://eyes-reaches-scheme-legends.trycloudflare.com)  
+**Alternative Branded Subdomain:** [https://vendorsync-ai.loca.lt](https://vendorsync-ai.loca.lt) *(Tunnel Password: `27.6.169.89`)*  
 **Status:** 🟢 Operational (24/7 HTTPS, Global Anycast CDN, Zero-Trust Tunnel)  
 **AI Inference Engine:** 🟢 NVIDIA NIM (`nvidia/nemotron-3-ultra-550b-a55b`)  
 **Database:** SQLite 3 (Production Seeds: 7 enterprise suppliers, 15 purchase orders) / PostgreSQL Ready  
