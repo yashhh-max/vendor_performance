@@ -17,3 +17,6 @@ build/
 *.pid
 cloudflared.exe
 cloudflared*
+
+# Local Netlify folder
+.netlify
